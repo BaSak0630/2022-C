@@ -1,0 +1,25 @@
+/*리소프 파일*/
+#include <stdio.h>
+#include "sum.h"
+
+main()
+{
+	printf("sum(10) = %d\n", sum(10));
+	printf("sum(100) = %d\n", sum(100));
+}
+
+------------------------------------------------------------------------------------------------------
+/*헤더파일 */
+#pragma once
+#include<stdio.h>
+#include<stdlib.h>
+int sum(int n);
+
+int sum(int n)
+{
+	if (n < 0) {
+		fprintf(stderr, "Please ues positive number.\n");
+		exit(-1);
+	}
+	return n * (n + 1) / 2;
+}
