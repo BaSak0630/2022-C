@@ -1,0 +1,40 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+int main()
+{
+	int a = 20;
+	int b = 30;
+
+	double c = 20.0;
+	double d = 30.0;
+	int* ap;
+	double* cp;
+	
+	priontf("sizeof(int) = %d, sizeof(float) = %d, sizeof(double) = %d\n", //여기랑
+		sizeof(int), sizeof(float), sizeof(double));
+	printf(" % d % f\n", a / d, c / d);여기
+
+	ap = &a;  cp = &c;
+
+	printf("%x %x\n", ap, cp);그리고 여기가 오류가
+	printf("%d %f\n",*ap,*cp);
+
+	*ap = 10.3;
+	*cp = 10.3;
+	printf("%d %f\n", *ap, *cp);
+
+	*ap = *ap + 30;
+	*cp = *cp + 30.0;
+	printf("%d %f \n",a,c);
+}
+	
+  
+심각도	코드	설명	프로젝트	파일	줄	비표시 오류(Suppression) 상태
+경고	C4013	'printf'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.	고급C	C:\Users\정석준\Desktop\김동혁\고급C\고급C\Test01.c	13	
+
+심각도	코드	설명	프로젝트	파일	줄	비표시 오류(Suppression) 상태
+경고	C4244	'=': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.	고급C	C:\Users\정석준\Desktop\김동혁\고급C\고급C\Test01.c	21	
+
+
+
