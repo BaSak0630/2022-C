@@ -1,0 +1,22 @@
+#include <stdio.h>
+
+main()
+{
+	int s;
+	int x;
+	int n;
+	int i; // index, counter
+	FILE* inFile; //문만들기
+
+	inFile = fopen("data.txt","r"); //문열기 
+
+	for(i = 0; i < 5; i++) {
+		fscanf(inFile,"%d",&n); 
+		s = 0;
+		for (x = 1 ; x <= n; x++ ) {
+			s = s + x;
+		}
+		printf("%d\n",s);
+	}
+	fclose(inFile); 
+}
