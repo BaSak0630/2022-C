@@ -1,0 +1,707 @@
+//과제에서 printf사용하지 말고 putchar(c)를 사용해라
+//putchar('1'); putchar('a'); putchar('\n'); putchar(' '); putchar('*');
+
+/*
+main()
+{
+	int i,j;
+
+	for (i = 1; i <= ???; i++)
+	{
+		for(j = ???; j <= ???; j++
+		{
+
+		}
+		putchar('\n');
+	}
+
+} //이중루프 기본형4
+*/
+#include<stdio.h>
+
+main()
+{
+	int i,j,k,n,m;
+	
+
+	putchar ('Q');
+	putchar ('1');
+	putchar (',');
+	putchar ('\n');
+
+	for (i = 0; i <= 5; i++)
+	{
+		putchar('*');
+	}
+
+	putchar ('\n');
+	putchar ('Q');
+	putchar ('2');
+	putchar (',');
+	putchar ('\n');
+	for (i = 0; i <= 5; i++)
+	{
+			putchar('*');
+			putchar('\n');
+	}
+	putchar ('\n');
+	putchar ('Q');
+	putchar ('3');
+	putchar (',');
+	putchar ('\n');
+
+	for (i = 0; i <= 5; i++)
+	{
+		for(j=0; j <=5; j++)
+		{
+			putchar('*');
+		}
+		putchar('\n');
+
+	}
+
+	putchar ('\n');
+	putchar ('Q');
+	putchar ('4');
+	putchar (',');
+	putchar ('\n');
+
+			for(j=0; j <=5; j++)
+			{
+				putchar('1');
+				
+			}
+			putchar('\n');
+			for(j=0; j <=5; j++)
+			{
+				putchar('2');
+				
+			}
+			putchar('\n');
+			for(j=0; j <=5; j++)
+			{
+				putchar('3');
+				
+			}
+			putchar('\n');
+			for(j=0; j <=5; j++)
+			{
+				putchar('4');
+				
+			}
+			putchar('\n');
+
+			for(j=0; j <=5; j++)
+			{
+				putchar('5');
+				
+			}
+			putchar('\n');
+
+	putchar('\n');
+	putchar ('Q');
+	putchar ('5');
+	putchar (',');
+	putchar ('\n');
+
+	for(i =0; i < 5; i++)
+	{
+		putchar('1');
+		putchar('2');
+		putchar('3');
+		putchar('4');
+		putchar('5');
+		putchar('\n');
+
+	}
+
+	putchar('\n');
+	putchar ('Q');
+	putchar ('6');
+	putchar (',');
+	putchar ('\n');
+
+		
+	k=1;
+
+	for(i = 0; i <5; i++)
+	{
+		for(j=0; j<5; j++)
+		{
+			printf_s("%d",k);
+
+			k++;
+		}
+		k=k-4;
+		printf_s("\n");
+	} //putchar로는 도저히 생각이 안나서 printf_s로 한번 해봄
+	
+		/*
+		putchar('1');
+		putchar('2');
+		putchar('3');
+		putchar('4');
+		putchar('5');
+		putchar('\n');
+		*/
+
+		putchar('\n');
+		putchar ('Q');
+		putchar ('7');
+		putchar (',');
+		putchar ('\n');
+
+		
+	k=5;
+	for(i = 0; i <5; i++)
+	{
+		for(j=0; j<5; j++)
+		{
+			printf_s("%d",k);
+			k++;
+		}
+		k=k-6;
+		printf_s("\n");
+	}
+		
+putchar('\n');
+putchar ('Q');
+putchar ('8');
+putchar (',');
+putchar ('\n');
+
+		
+for (i = 0; i <= 5; i++)
+{
+	for(j=0; j <=i; j++)
+	{
+		putchar('*');
+	}
+	putchar('\n');
+
+}
+
+putchar('\n');
+putchar ('Q');
+putchar ('9');
+putchar (',');
+putchar ('\n');
+
+k=4;
+		
+for (i = 0; i <= 4; i++)
+{
+	for(j=0; j <=k; j++)
+	{
+		putchar('*');
+	}
+	k--;
+	putchar('\n');
+
+}
+	
+putchar('\n');
+putchar ('Q');
+putchar ('1');
+putchar ('0');
+putchar (',');
+putchar ('\n');
+
+k= 4;
+
+for (i = 0; i < 5; i++)
+{
+	for(n = 0; n<i; n++)
+	{
+		putchar(' ');
+	}
+
+	for(j=0; j <=k; j++)
+	{
+		putchar('*');
+	}
+	k--;
+	putchar('\n');
+
+}
+
+putchar('\n');
+putchar ('Q');
+putchar ('1');
+putchar ('1');
+putchar (',');
+putchar ('\n');
+
+k = 4;
+
+for (i = 0; i < 5; i++)
+{
+	for(n = 0; n < k; n++)
+	{
+		putchar(' ');
+	}
+
+	for(j=0; j <= i; j++)
+	{
+		putchar('*');
+	}
+	k--;
+	putchar('\n');
+
+}
+
+putchar('\n');
+putchar ('Q');
+putchar ('1');
+putchar ('2');
+putchar (',');
+putchar ('\n');
+
+
+		
+for (i = 0; i <= 5; i++)
+{
+	for(j=0; j <=i; j++)
+	{
+		putchar('*');
+	}
+	putchar('\n');
+
+}
+k=4;
+		
+for (i = 0; i <= 5; i++)
+{
+	for(j=0; j <=k; j++)
+	{
+		putchar('*');
+	}
+	k--;
+	putchar('\n');
+
+}
+
+
+
+putchar('\n');
+putchar ('Q');
+putchar ('1');
+putchar ('3');
+putchar (',');
+putchar ('\n');
+
+k=4;
+		
+for (i = 0; i <= 5; i++)
+{
+	putchar('\n');
+	for(j=0; j <=k; j++)
+	{
+		putchar('*');
+		
+	}
+	
+	k--;
+}
+for (i = 0; i <= 3; i++)
+{
+	putchar('*');
+	for(j=0; j <= i; j++)
+	{
+		putchar('*');
+	}
+	putchar('\n');
+}
+
+
+
+
+putchar('\n');
+putchar ('Q');
+putchar ('1');
+putchar ('4');
+putchar (',');
+putchar ('\n');
+
+
+k= 4;
+
+for (i = 0; i < 5; i++)
+{
+	for(n = 0; n<i; n++)
+	{
+		putchar(' ');
+	}
+
+	for(j=0; j <=k; j++)
+	{
+		putchar('*');
+	}
+	k--;
+	putchar('\n');
+
+}
+k = 3;
+
+for (i = 0; i < 4; i++)
+{
+	for(n = 0; n < k; n++)
+	{
+		putchar(' ');
+	}
+	putchar('*');
+	for(j=0; j <= i; j++)
+	{
+		putchar('*');
+	}
+	k--;
+	putchar('\n');
+
+}
+
+
+
+
+putchar('\n');
+putchar ('Q');
+putchar ('1');
+putchar ('5');
+putchar (',');
+putchar ('\n');
+
+k = 4;
+
+for (i = 0; i < 5; i++)
+{
+	for(n = 0; n < k; n++)
+	{
+		putchar(' ');
+	}
+
+	for(j=0; j <= i; j++)
+	{
+		putchar('*');
+	}
+	k--;
+	putchar('\n');
+
+}
+k= 3;
+
+for (i = 0; i < 5; i++)
+{
+	for(n = 0; n<i+1; n++)
+	{
+		putchar(' ');
+	}
+
+	for(j=0; j <=k; j++)
+	{
+		putchar('*');
+	}
+	k--;
+	putchar('\n');
+
+}
+
+putchar('\n');
+putchar ('Q');
+putchar ('1');
+putchar ('6');
+putchar (',');
+putchar ('\n');
+
+
+k = 4;
+
+for (i = 0; i < 5; i++)
+{
+	for(n = 0; n < k; n++)
+	{
+		putchar(' ');
+	}
+	for(j=0; j <= i; j++)
+	{
+		putchar('*');
+		
+	}
+	for(m =2; m<= j; m++)
+	{
+			putchar('*');
+	}
+
+	k--;
+
+	putchar('\n');
+}
+	
+putchar('\n');
+putchar ('Q');
+putchar ('1');
+putchar ('7');
+putchar (',');
+putchar ('\n');
+ 
+
+k= 4;
+
+for (i = 0; i < 5; i++)
+{
+	for(n = 0; n<i; n++)
+	{
+		putchar(' ');
+	}
+
+	for(j=0; j <=k; j++)
+	{
+		putchar('*');
+	}
+	for(m =2; m<= j; m++)
+	{
+			putchar('*');
+	}
+
+	k--;
+	putchar('\n');
+
+}
+
+putchar('\n');
+putchar ('Q');
+putchar ('1');
+putchar ('8');
+putchar (',');
+putchar ('\n');
+
+
+k = 4;
+
+for (i = 0; i < 5; i++)
+{
+	for(n = 0; n < k; n++)
+	{
+		putchar(' ');
+	}
+	for(j=0; j <= i; j++)
+	{
+		putchar('*');
+		
+	}
+	for(m =2; m<= j; m++)
+	{
+			putchar('*');
+	}
+
+	k--;
+
+	putchar('\n');
+}
+
+k= 3;
+
+for (i = 0; i < 4; i++)
+{
+	putchar(' ');
+	for(n = 0; n<i; n++)
+	{
+		putchar(' ');
+	}
+
+	for(j=0; j <=k; j++)
+	{
+		putchar('*');
+	}
+	for(m =2; m<= j; m++)
+	{
+			putchar('*');
+	}
+
+	k--;
+	putchar('\n');
+
+}
+
+putchar('\n');
+putchar ('Q');
+putchar ('1');
+putchar ('9');
+putchar (',');
+putchar ('\n');
+
+
+k=4;
+		
+for (i = 0; i <= 4; i++)
+{
+	for(j=0; j <=k; j++)
+	{
+		putchar('*');
+	}
+	for(n = 0; n<i; n++)
+	{
+		putchar(' ');
+	}
+		for(n = 0; n<i; n++)
+	{
+		putchar(' ');
+	}
+	
+	putchar(' ');
+	for(j=0; j <=k; j++)
+	{
+		putchar('*');
+	}
+	k--;
+	putchar('\n');
+}
+
+k=3;
+
+for (i = 0; i <= 3; i++)
+{
+	for(j=0; j <=i+1; j++)
+	{
+		putchar('*');
+	}
+
+	for(j=0; j <=k; j++)
+	{
+		putchar(' ');
+	}
+
+	for(n = 0; n < k; n++)
+	{
+		putchar(' ');
+	}
+
+	for(j=0; j <=i+1; j++)
+	{
+		putchar('*');
+	}
+	k--;
+
+	putchar('\n');
+}
+
+putchar('\n');
+putchar ('Q');
+putchar ('1');
+putchar ('9');
+putchar (',');
+putchar ('\n');
+
+k=4;
+for (i = 0; i <5; i++)
+{
+	for(j=0; j <=i; j++)
+	{
+		putchar('*');
+	}
+
+	for(j=0; j <= k; j++)
+	{
+		putchar(' ');
+	}
+
+	for(n = 0; n < k; n++)
+	{
+		putchar(' ');
+	}
+
+	for(j=0; j <=i; j++)
+	{
+		putchar('*');
+	}
+	k--;
+
+	putchar('\n');
+}
+
+
+k = 4;
+		
+for (i = 0; i < 4; i++)
+{
+	for(j=0; j < k; j++)
+	{
+		putchar('*');
+	}
+	for(n = 0; n<i+1; n++)
+	{
+		putchar(' ');
+	}
+		for(n = 0; n < i+1; n++)
+	{
+		putchar(' ');
+	}
+	
+	putchar(' ');
+	for(j=0; j < k; j++)
+	{
+		putchar('*');
+	}
+	k--;
+	putchar('\n');
+}
+
+putchar('\n');
+putchar ('Q');
+putchar ('2');
+putchar ('0');
+putchar (',');
+putchar ('\n');
+
+k=4;
+for (i = 0; i <5; i++)
+{
+	for(j=0; j <=i; j++)
+	{
+		putchar(' ');
+	}
+
+	for(j=0; j <= k; j++)
+	{
+		putchar('*');
+	}
+
+	for(n = 0; n < k; n++)
+	{
+		putchar('*');
+	}
+
+	for(j=0; j <=i; j++)
+	{
+		putchar(' ');
+	}
+	k--;
+
+	putchar('\n');
+}
+
+
+k = 4;
+		
+for (i = 0; i < 4; i++)
+{
+	for(j=0; j < k; j++)
+	{
+		putchar(' ');
+	}
+	for(n = 0; n<i+1; n++)
+	{
+		putchar('*');
+	}
+		for(n = 0; n < i+1; n++)
+	{
+		putchar('*');
+	}
+	
+	putchar('*');
+	for(j=0; j < k; j++)
+	{
+		putchar(' ');
+	}
+	k--;
+	putchar('\n');
+}
+
