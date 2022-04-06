@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int sum(int n);
+
+main()
+{
+	int i,j,k=1;
+	
+	printf("< summation table from 1 to 100 >\n");
+	for (i = 0; i < 10; i++) 
+	{
+		printf("%c",1);
+	
+		for (j = 0; j < 10; j++) 
+		{
+			printf("%c%c%c%c%c%c",6,6,6,6,6,2);
+		}
+		putchar('\n');
+		putchar('|');
+	
+		for (j = 0; j < 10; j++)
+		{
+			printf("%5d%c",sum(k++),5);
+		}
+		printf("\n");
+	}
+
+	printf("%c",3);
+
+	for (j = 0; j < 10; j++) 
+	{
+		printf("%c%c%c%c%c%c",6,6,6,6,6,4);
+	}
+
+	printf("\n");
+}
+
+int sum(int n) 
+{
+	if (n < 0) {
+		fprintf(stderr,"Please use positive number.\n");
+		exit(-1);
+	}
+	return n*(n+1)/2;
+}
