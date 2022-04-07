@@ -1,0 +1,36 @@
+#include<stdio.h>
+
+main()
+{
+	/*
+	unsigned char c; //char을 양수로만 사용할때
+	int i;
+
+	c = 0;
+
+	for(i = 0; i <256; i++)
+	{
+		printf("c = %d\n",c);
+		c++;
+	}
+	*/
+	/*
+	char x;
+
+	for(x = 0; x < 125; x++)
+	{
+		printf("%d => %c \n",x,x);
+	}
+	*/
+
+	char x;
+	char y;
+	int z;
+
+	x = 'p';
+
+	z = x - ('a' - 'A'); //소문자에서 48을 빼면 대문자로 바꿈 반대로 대문자에서 48더하면 소문자로 바뀜 그런식으로 이용하면됨
+
+	printf("%c\n",z);
+
+}
