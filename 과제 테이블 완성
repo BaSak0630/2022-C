@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int sum(int n) 
+{
+	if (n < 0) {
+		fprintf(stderr,"Please use positive number.\n");
+		exit(-1);
+	}
+	return n*(n+1)/2;
+}
+
+main()
+{
+	int i,j,k=1;
+	char x;
+	
+	printf("< summation table from 1 to 100 >\n");
+
+	for (i = 0; i < 10; i++) 
+	{
+		if(i == 0)
+		{
+			printf("%c",1);
+		}
+		else
+		{
+			printf("%c",25);
+		}
+		if(i == 0)
+		{
+			for (j = 0; j < 9; j++) 
+			{
+				printf("%c%c%c%c%c%c",6,6,6,6,6,22);
+			}
+		}
+		else
+		{
+			for (j = 0; j < 9; j++) 
+			{
+				printf("%c%c%c%c%c%c",6,6,6,6,6,16);
+			}
+		}
+		if(i == 0)
+		{
+			printf("%c%c%c%c%c%c",6,6,6,6,6,2);
+		}
+		else
+		{
+			printf("%c%c%c%c%c%c",6,6,6,6,6,23);
+		}
+		putchar('\n');
+		printf("%c",5);
+	
+		for (j = 0; j < 10; j++)
+		{
+			printf("%5d%c",sum(k++),5);
+		}
+		putchar('\n');
+	}
+	printf("%c",3);
+	for (j = 0; j < 9; j++) 
+	{
+		printf("%c%c%c%c%c%c",6,6,6,6,6,21);
+	}
+	printf("%c%c%c%c%c%c",6,6,6,6,6,4);
+	putchar('\n');
+	printf("20191769 김동혁\n");
+
+
+}
+
