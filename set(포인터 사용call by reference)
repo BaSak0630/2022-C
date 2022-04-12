@@ -1,0 +1,48 @@
+#incluide <stdio.h>
+
+void set_10(int a, int b)
+{
+  a = 10;
+  b = 10;
+}
+
+main()
+{
+  int x;
+  int y;
+  
+  print("beggore initialization : x = %d y =%d \n",x,y);
+  
+  set_10(x,y);
+  
+  pritnf("agter initialization : z = %d y = %d \n", x,y);
+}
+/* 결과는 다음과 같이 나온다.
+before initialization: x = -858993460 y = -858993460
+after initialization: x = -85993460 y = -85996460
+*/
+// 위의 코드가 저런 값이 나온 이유는 함수에서 포인터를 사용하지 않아  set_10 함수로 들어간 x,y가 빠져 나오면서 메모리
+// 할당이 해제되기 때문이다. 
+// 
+
+//////////////////////////////////////////////////////////////////////////////////////
+#include <stdio.h>
+
+void set_10(int *a, int *b)
+{
+  *a = 10;
+ * b = 10;
+}
+
+main()
+{
+  int x;
+  int y;
+  
+  print("beggore initialization : x = %d y =%d \n",x,y);
+  
+  set_10(&x,&y);//main의 값을 함수로 바꾸고 싶으면 call by referencef를해서 포인터를 이용해야 한다. 
+  
+  pritnf("agter initialization : z = %d y = %d \n", x,y);
+}
+
