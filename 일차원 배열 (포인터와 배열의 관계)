@@ -1,0 +1,110 @@
+/* main.c */
+/* 강의 주제 :
+	일차원 배열
+	포인터와 배열의 관계
+*/
+
+#include <stdio.h>
+
+void print1(int p[10])
+{
+	int i;
+	for(i = 0; i < 10; i++) {
+		printf("%d ",p[i]);
+	}
+	printf("\n");
+}
+
+void print2(int p[],int n)
+{
+	int i;
+	for(i = 0; i < n; i++) {
+		printf("%d ",p[i]);
+	}
+	printf("\n");
+}
+
+void print3(int *p,int n)
+{
+	int i;
+	for(i = 0; i < n; i++) {
+		printf("%d ",p[i]);
+	}
+	printf("\n");
+}
+
+void print4(int *p,int n)
+{
+	int i;
+	for(i = 0; i < n; i++) {
+		printf("%d ",*p);
+		p++;
+	}
+	printf("\n");
+} //p++ 가 *p의 주소값의 다음값이 됨
+
+void print5(int *p,int n)
+{
+	int i;
+	for(i = 0; i < n; i++) {
+		printf("%d ",*(p+i));
+	}//여기서도 *(p+1)이 call by value가 아니라 call by reference임
+	printf("\n");
+}
+
+void sub_10_from_data(int x[])
+{
+	int n;
+	for(n = 0; n < 10; n++) {
+		x[n] = x[n] - 10;
+	}
+}
+
+void add_20_to_data(int data[],int max)
+{
+	int n;
+	for(n = 0; n < max; n++) {
+		data[n] = data[n] + 20;
+	}
+}
+
+void add_data(int data[],int max,int how_much)
+{
+	int i;
+	for(i = 0; i < max; i++) {
+		data[i] = data[i] + how_much;
+	}
+}
+
+main()
+{
+	int data[10];
+	int i;
+
+	for(i = 0; i < 10; i++) {
+		data[i] = i*10;
+	}
+	print1(data);
+	sub_10_from_data(data);
+	print1(&data[0]);
+	print2(data,10);
+	print3(data,10);
+	print4(data,10);
+	print5(data,10);
+	add_20_to_data(data,10);
+	print2(data,10);
+	add_data(data,10,30);
+	print2(data,10);
+}
+
+/* 결과는 다음과 같이 나온다.
+0 10 20 30 40 50 60 70 80 90
+-10 0 10 20 30 40 50 60 70 80
+-10 0 10 20 30 40 50 60 70 80
+-10 0 10 20 30 40 50 60 70 80
+-10 0 10 20 30 40 50 60 70 80
+-10 0 10 20 30 40 50 60 70 80
+-10 0 10 20 30 40 50 60 70 80
+10 20 30 40 50 60 70 80 90 100
+40 50 60 70 80 90 100 110 120 130
+*/
