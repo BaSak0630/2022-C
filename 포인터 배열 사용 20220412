@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+main()
+{
+    int x[10] = { 38, 54,67,45,89,12,17,82,51 };
+    int i;
+    int* p;
+    int* q;
+
+    p = x;
+    q = &x[3];
+
+    q[3] = 2000;
+
+    for (i = 0; i < 10; i++)
+    {
+        printf("%d,", x[i]);
+    }
+    printf("\n");
+    for (i = 0; i < 10; i++)
+    {
+        printf("%d", q[i]);// x[6]의17이 2000이되다. 주의 요망
+    }
+    printf("\n");
+
+}
