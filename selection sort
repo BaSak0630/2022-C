@@ -1,0 +1,83 @@
+#include <stdio.h>
+//select  sort(선택 정렬)
+//swap을 이용해 위치를 바꿔 정령하는것을 sorting 이라고 한다. 
+//sorting방법중 bubble sort, selection sort, insertion sort 순서로 쉬다고 함 
+//위 세가지 sorting  방법을 꼭 익히기 2학년 까지 
+//quick sort, merge sort,heap sort,shell sort 이것도 공부 유명한 소팅 방법 7가지 
+
+void printArray(int a[], int n)
+{
+	int i;
+
+	for (i = 0; i < n; i++)
+	{
+		printf("%d ", a[i]);
+	}
+	printf("\n");
+}
+int getMaxPos(int p[], int n)
+{
+	int max;
+	int maxPos;
+	int i;
+
+	max = -1;
+	maxPos = -1;
+
+	for (i = 0; i < n; i++)
+	{
+		if (p[i] > max)
+		{
+			max = p[i];
+			maxPos = i;
+		}
+	}
+	return maxPos;
+}
+void swap(int* a, int* b)
+{
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+void selectionSort(int p[], int n)
+{
+	int i;
+	int maxPos;
+
+	for (i = 0; i < 9; i++)
+	{
+		maxPos = getMaxPos(p, n -i);
+		swap(&p[maxPos], &p[n - 1 - i]);
+	}//sorting이라고 함 
+	//phase 단계(변해가는 과정을 한 단계를 phase라고 함)
+}
+
+main()
+{
+	int x[10] = {38,54,67,45,89,12,29,17,82,11 };
+
+	printf("=========before sort=========\n");
+	printArray(x, 10);
+
+	selectionSort(x, 10);
+
+	printf("=========before sort=========\n");
+	printArray(x, 10);
+	/*max = -1; // 제일 작은수 양수만 있다고 가정
+	maxPos = -1;
+
+	for (i = 0; i < 10; i++)
+	{
+		if (x[i] > max)
+		{
+			max = x[i];
+			maxPos = i;
+		}
+	}//
+	*/
+	//printf("max = %d, maxPos = %d\n",x[maxPos], maxPos);
+
+}
