@@ -49,7 +49,7 @@ main()
 
 	int i,j;
 
-	calculateSum((int*)x,3,4)
+	calculateSum((int*)x,3,4);
 	/*
 	for(i = 0; i < 3; i++)
 	{
