@@ -1,0 +1,39 @@
+#include <stdio.h>
+#include <string.h>
+
+int my_strlen(char *s)//strlen을 구현해보기
+{
+	int n;
+
+	for(n = 0; *s != '\0'; s++)
+	{
+		n++;
+	}
+	return n;
+
+}
+
+
+
+main()
+{
+	char x[10];//= {'k','i','m','\0'};
+	int n;
+	int i;
+	//char x[10] = "kim"; //문자열 상수"kim"은 4bety 사용 뒤에 \0이 생략 되어 있음. 'a' "a" 는 서로 다름
+
+/*
+	x[0] = 'k'; //''를 사용하는 이유는 문자 상수 이기 떄문에 실제로는 아스키 코드 값이라고 생각하면 됨
+	x[1] = 'i';
+	x[2] = 'm';
+	x[3] = '\0';// \0은 나머지 문자열 자리에 NULL 캐릭터 값을 넣는 역활을 한다.
+*/
+	//사용하지 않는다면 쓰레기 값이 들어가게 된다.
+	for(i = 0; i <5; i ++)
+	{
+		scanf("%s",x);
+		//n = strlen(x); //문자열의 크기를 나타내는 함수 논리적 크기만 포함 \0은 포함하지 않는다.
+		n = my_strlen(x);
+		printf("length of %s is %d\n",x,n);
+	}
+}
