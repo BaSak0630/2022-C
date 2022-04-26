@@ -1,0 +1,36 @@
+#include <stdio.h>
+#define NULL (0)
+/*
+포인터의 사용 목적 
+1.Call by  reference
+2.배열과 혼용하기 위해서 
+3.Dymamic allocation(동적 할당)
+4.사물들 끼리의 관계를 표현하기 위해서(date structure에서 중요
+자바과 c#에서 는 1.2는 사용하지 않음
+3.4는 c#과 자바에서 reterence로 사용
+*/
+main()
+{
+	int a,b;
+	int *ap;
+	int *bp;
+
+	printf("sizeof(int*) = %d\n",sizeof(int*));
+	printf("%d %d %d %d\n",&a,&b,&ap,&bp);
+	ap = &a; //&는 a의 주소를 나타냄,주솟값은 정수가 아니다.
+	bp = &b;
+	//ap =0; 은 아무것도 안가르킨다는 뜻 -> ap = NULL; 그냥 숫자 0을 쓰면 가독성 떨어져서 NULL쓴다
+	a = 10;
+	b = 20;
+	*ap = 100;
+	*bp =*bp+200;
+	printf("a = %d, b = %d\n",a,b);
+
+	bp = bp +3; //int 단위로 4byte를 3번 더해 bp는 a의 주솟값을 가리키게 된다. 포인터의 연산 덧셉은 역방향이다.b->a
+	*bp =1000;  
+	// ap = 3930293;는 기본적으로 포인터에 물리적으로 수를 넣거나 연사을 하지마라
+	printf("a = %d, b = %d\n",a,b);
+	ap = ap-3; //포인터의 뺄셈은 정방향 a->b
+	*ap =1000;
+	printf("a = %d, b = %d\n",a,b);
+}
