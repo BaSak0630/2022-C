@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+	
+void my_strcat(char *s,char *t)
+{
+	int i,j;
+
+	i = j = 0;
+	while(s[i] != '\0') i++;
+
+	while((s[i++] = t[j++]) != '\0');
+
+
+}
+
+
+main()
+{
+	char *p = "taegyun";
+	char q[20];
+
+	strcpy(q,"kim");
+	my_strcat(q,p);
+	//strcat(q,p);//strcmp처럼 저장공간을 넉넉하게 만들어야 한다. 
+	printf("%s",q);
+}
+//앞에 있는 문자열 뒤에 문자열을 붙이는 
