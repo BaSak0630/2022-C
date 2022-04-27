@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <string.h>
+
+void my_strcpy(char *to,char *from)
+{
+
+	while(*to++ = *from++);
+}
+
+main()
+{
+	//char *x = "kim";
+	char *x = "Kim taegyun";
+	char y[4]; // 이렇게 되면 기억 장소가 확보 되어 있어야 다른 변수의 기억장소에 영향을 주는 것을 막을 수 있다. 
+	//충분히 넉넉하게 용량을 확보 해야 한다. 
+	//char *y = "Lee";// x,y 둘다 기억장소를 가르키고 있을때
+	//x의 "Kim"을 y의 "Lee"는 static area에 옮길때 상수풀에 있어 수정을 할수 없기 때문에 런타임 에러가 뜬다.
+	//char *y; // <= 쓰레기 값 우리가 접근이 안되서 런타임에러
+
+	/*
+	char *x = "kim";
+	char y[10];
+	*/
+
+	my_strcpy(y,x);
+	//strcpy(y,x);
+	printf("y = %s\n",y);
+	//strcpy 사용시 주의할점 
+	//
+}	
