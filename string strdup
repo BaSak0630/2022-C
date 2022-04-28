@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+#include <malloc.h>
+	
+
+
+char *my_strdup(char *s)
+{
+	char *p;
+
+	p = (char*)malloc(strlen(s)+1);
+	strcpy(p,s);
+
+	return p;
+}
+
+
+main()
+{
+	char *x;
+
+	x = my_strdup("Hello, my  name is kim.");
+	//x = strdup("Hello, my  name is kim.");
+	//x = "Hello, my  name is kim.; //는 상수풀을 건드리 기때문에 런타임 에러가 발생
+	x[5] = '!';
+	printf("%s\n",x);
+}
