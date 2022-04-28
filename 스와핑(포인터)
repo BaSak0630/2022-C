@@ -10,7 +10,7 @@ main()
 	int b = 20;
 	int tmp;
 
-	printf("before swapping: a = %d b = %d\n", a, b);
+	printf("before swapping: a = %d b = %d\n", a, b);//함수안에서 전역변수를 사용하는 것은 엉터리이다. 보편적이지 못하게 된다. 
 	tmp = a;
 	a = b;
 	b = tmp;
@@ -18,6 +18,12 @@ main()
 		a = b;
 		b = a;
 	*/
+	//swap exchange 
+	//x = x ^ y;
+	//y = x ^ y;
+	//x = x ^ y;//이과정을 하면 비트와이져 연사자라서 서로의 자리를 바꾼다. 
+	// ^ 는 hat 익스클루시브 오아
+	
 	printf("after swapping: a = %d b = %d\n", a, b);
 }
 
@@ -30,11 +36,11 @@ after swapping: a = 20 b = 10
 ///////////////포인터 사용///////////////////////////////
 #include <stdio.h>
 
-void swap(int *a,int *b)
+void swap(int *a,int *b)//()안에 있는 건 formal parameter
 {
   int tmp;
   
-  tmp = *a;
+  tmp = *a;// *를 적어주는 행위를 디레퍼런싱
   *a = *b;
   *b = tmp;
 }
@@ -45,7 +51,7 @@ main()
   int b = 20;
   
   printf("before swapping : a = %d , b = %d \n", a,b)
-  swap(&a,&b); //integer point type 
+  swap(&a,&b); //integer point type //()안에 있는건  actual parameter
   printf("after swapping : a = %d , b = %d \n", a,b);
 }
 //ex) f(x,y,&z,&a,p) 라는 함수가 있다고 가정했을 때 actual parameter중  x,y,p는 call by value(원래의 값?)이고, &z,&a는 call by reference(주소값)이다.
