@@ -1,0 +1,102 @@
+/* string6.c */
+/* 강의 주제 :
+	string의 배열 (automatic allocation)
+	string 함수 사용법과 주의 사항
+*/
+
+#include <stdio.h>
+#include <malloc.h>
+#include <stdlib.h>
+#include <string.h>
+#define MAX (5)
+
+void printName(char *p)
+{
+	printf("name = %s\n",p);
+}
+
+
+main()
+{
+	char names[5][10]; //자동 할당
+  //char *names[5]; //포인터 array
+	int i;
+
+	strcpy(names[0],"kim");
+	strcpy(names[1],"lee");
+	strcpy(names[2],"kwon");
+	strcpy(names[3],"seong");
+	strcpy(names[4],"park");
+
+	for(i = 0; i < MAX; i++) printName(names[i]);
+	printf("\n");
+
+	names[1][2] = 'X';
+	for(i = 0; i < MAX; i++) printName(names[i]);
+	printf("\n");
+
+	/* 이상한 현상 발생 ... 이유는 ...
+	
+	names[1][3] = 'Y';//이 자리에 \0자리라서 kwon까지 이상한 값이 들어 가있다.
+	// 자동할당 2차원 배열은 실질적으로 저장 공간이 1열로 되어 있는 것이 때문에 주의 해야 한다.
+	for(i = 0; i < MAX; i++) printName(names[i]);
+	printf("\n");
+	*/
+
+	strcpy(names[2],"abcdefghi");
+	for(i = 0; i < MAX; i++) printName(names[i]); //\0이 names[3]의 시작에 들어가서 출력 하지 않음
+	printf("\n");
+
+	strcpy(names[2],"abcdefghij");
+	// j까지 넣은면 names[3]의 시작에 \0가들어 가기 때문에 
+	for(i = 0; i < MAX; i++) printName(names[i]);
+	printf("\n");
+
+}
+/*
+	문자열 배열 (string array)
+	사용 목적 : 출석부, 고객 명단, 메뉴'
+
+	자동 할당 방식
+	동적 할당 방식
+
+	둘 다 주의사항 많음 -> 자바나 C#에서 개선됨
+
+	2차원 배열에서 x[i]의 의미
+	
+	x[i]를 사용할수 있지만 기억 장소는 존재하지 않음
+	x[i] == &x[i][0]라는 뜻이다. 
+
+	포인터 배열에서 x[i]의 이미 
+	i번째 배열 element (기억 장소 존재)
+
+*/
+
+
+
+/* 결과는 다음과 같이 나온다.
+	name = kim
+	name = lee
+	name = kwon
+	name = seong
+	name = park
+
+	name = kim
+	name = leX
+	name = kwon
+	name = seong
+	name = park
+
+	name = kim
+	name = leX
+	name = abcdefghi
+	name = seong
+	name = park
+
+	name = kim
+	name = leX
+	name = abcdefghij
+	name = 
+	name = park
+
+*/
