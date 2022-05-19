@@ -19,7 +19,8 @@ void printName(char *p)
 main()
 {
 	char names[5][10]; //자동 할당
-  //char *names[5]; //포인터 array
+  //char *names[5]; //포인터 array 
+  //constant pool에 상수풀에 있어서 read only라서 수정이 
 	int i;
 
 	strcpy(names[0],"kim");
