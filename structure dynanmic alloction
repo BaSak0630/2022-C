@@ -1,0 +1,62 @@
+/* struct3.c */
+/* 강의 주제 :
+	structure (record)
+	전형적인 사용법
+	call by reference 의 효용성
+*/
+
+#include <stdio.h>
+#include <malloc.h>
+#include <stdlib.h>
+
+typedef struct point {
+	int x;
+	int y;
+} Point, *PointPtr;
+
+/* very different from
+struct point {
+	int x;
+	int y;
+} Point;
+*/
+
+void findCenterPoint(Point *p,Point *q,Point *r)
+{
+	p->x = (q->x + r->x) / 2;
+	p->y = (q->y + r->y) / 2;
+}
+
+void printPoint(char *name,PointPtr p)
+{
+	printf("%s = (%d,%d)\n",name,p->x,p->y);
+}
+
+main()
+{
+	//구조체를 dynamic allocation 하는 행위 
+	Point *pa = (Point *)malloc(sizeof(Point));
+	Point *pb = (Point *)malloc(sizeof(Point));
+	Point *pc = (Point *)malloc(sizeof(Point));
+
+	pa->x = 10;
+	pa->y = 10;
+
+	pb->x = 20;
+	pb->y = 30;
+
+	findCenterPoint(pc,pa,pb);
+	printPoint("a",pa);	
+	printPoint("b",pb);	
+	printPoint("c",pc);	
+
+	free(pa);
+	free(pb);
+	free(pc);
+}
+
+/* 결과는 다음과 같이 나온다.
+a = (10,10)
+b = (20,30)
+c = (15,20)
+*/
