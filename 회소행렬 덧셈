@@ -1,0 +1,179 @@
+#include <stdio.h>
+#include <malloc.h>
+
+typedef struct element
+{
+	int row;
+	int col;
+	int value;
+};
+
+typedef struct SparseMatrix
+{
+	struct element data[100];
+
+	int rows;
+	int cols;
+	int terms;
+};
+
+void scanElement(int s, struct SparseMatrix matrix)
+{
+	int r,c,v;	
+	int i;
+	for(i = 0; i <s; i++)
+	{
+		printf("행과 열과 값을 입력하시요\n");
+		scanf("%d",&r);
+		scanf("%d",&c);
+		scanf("%d",&v);
+		matrix.data[i].row = r;
+		matrix.data[i].col = c;
+		matrix.data[i].value = v;
+	}
+}
+void sumMatrix(struct SparseMatrix matrix1,struct SparseMatrix matrix2,struct SparseMatrix matrix3)
+{
+	int i,j;
+	int terms1 = matrix1.terms;
+	int terms2 = matrix2.terms;
+	if(terms1 >= terms2)
+	{
+		for(i = 0; i < terms1; i++)
+		{
+			matrix3.data[i] = matrix1.data[i];
+		}
+	}
+	else if(terms1 < terms2)
+	{
+		for(i = 0; i < terms2; i++)
+		{
+			matrix3.data[i] = matrix2.data[i];
+		}
+	}
+	//항이 많은 매트릭스를 3번에 똑같이 복사하고  항이 적은 매트릭스랑 비교해서 밸류랑 항을 더하줌
+	/*
+
+	int terms1 = matrix1.terms;
+	int terms2 = matrix2.terms;
+
+	int i,j,k = 0;
+	
+	if(terms1 >= terms2)
+	{
+		for( i = 0; i < terms1; i++);
+		{
+			for( j = 0; j < terms2; j++);
+			{
+				if(matrix1.data[i].row == matrix2.data[j].row)
+				{
+					if(matrix1.data[i].col == matrix2.data[j].col)
+					{
+						matrix3.data[k].row = matrix1.data[i].row;
+						matrix3.data[k].col = matrix1.data[i].col;
+						matrix3.data[k].value = matrix1.data[i].value + matrix2.data[j].value;
+						k++;
+					}
+					else
+					{
+						matrix3.data[k].row = matrix1.data[i].row;
+						matrix3.data[k].col = matrix1.data[i].col;
+						matrix3.data[k].value = matrix1.data[i].value;
+						k++;
+					}
+				}
+				else
+				{
+					matrix3.data[k].row = matrix1.data[i].row;
+					matrix3.data[k].col = matrix1.data[i].col;
+					matrix3.data[k].value = matrix1.data[i].value;
+					k++;
+				}
+			}
+		}
+	}
+	else if(terms1 < terms2)
+	{
+		for( i = 0; i < terms2; i++);
+		{
+			for( j = 0; j < terms1; j++);
+			{
+				if(matrix2.data[i].row == matrix1.data[j].row)
+				{
+					if(matrix2.data[i].col == matrix1.data[j].col)
+					{
+						matrix3.data[k].row = matrix2.data[i].row;
+						matrix3.data[k].col = matrix2.data[i].col;
+						matrix3.data[k].value = matrix1.data[i].value + matrix2.data[j].value;
+						k++;
+					}
+					else
+					{
+						matrix3.data[k].row = matrix1.data[i].row;
+						matrix3.data[k].col = matrix1.data[i].col;
+						matrix3.data[k].value = matrix1.data[i].value;
+						k++;
+					}
+				}
+				else
+				{
+					matrix3.data[k].row = matrix1.data[i].row;
+					matrix3.data[k].col = matrix1.data[i].col;
+					matrix3.data[k].value = matrix1.data[i].value;
+					k++;
+				}
+			}
+		}
+	}
+	matrix3.terms= k;
+	*/
+}
+
+void printMatrix(struct SparseMatrix matrix)
+{
+	int i;
+	printf("%d\n",matrix.terms);
+	for(i = 0; i < matrix.terms; i++);
+	{
+		printf("%d",matrix.data[i].row);
+		printf("%d",matrix.data[i].col);
+		printf("%d",matrix.data[i].value);
+		printf("\n");
+	}
+}
+
+
+main()
+{
+	int N;
+	int M;
+	int S1;
+	int S2;
+
+	struct SparseMatrix matrix_1;
+	struct SparseMatrix matrix_2;
+	struct SparseMatrix matrix_3;
+	printf("행과 열을 입력하시오\n");
+	scanf("%d",&N);
+	scanf("%d",&M);
+	matrix_1.rows = N;
+	matrix_2.rows = N;
+	matrix_3.rows = N;
+	matrix_1.cols = M;
+	matrix_2.cols = M;
+	matrix_3.cols = M;
+
+	printf("항의 개수를 입력하시오\n");
+	scanf("%d",&S1);
+	scanElement(S1,matrix_1);
+	printf("항의 개수를 입력하시오\n");
+	scanf("%d",&S2);
+	scanElement(S2,matrix_2);
+
+	sumMatrix(matrix_1,matrix_2,matrix_3);
+
+	
+	printMatrix(matrix_1);
+	
+
+}
