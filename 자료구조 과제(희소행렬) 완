@@ -1,0 +1,262 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define _CRT_SECURE_NO_WARNINGS
+
+typedef struct Element {
+
+	int row;
+	int col;
+	int value;
+
+}Element;
+
+typedef struct sparseMatrix {
+	Element data[100];
+
+	int rows; // 행의 개수
+	int cols; // 열의 개수
+	int terms; // 항의 개수
+
+}SM;
+void sorting(int n, SM* matrix)
+{
+	int i, j;
+	Element temp;
+
+	for (i = n - 1; i >= 0; i--)
+	{
+		for (j = 0; j < i; j++)
+		{
+			if (matrix->data[j].row == matrix->data[j + 1].row)
+			{
+				if (matrix->data[j].col > matrix->data[j + 1].col)
+				{
+					temp = matrix->data[j + 1];
+					matrix->data[j + 1] = matrix->data[j];
+					matrix->data[j] = temp;
+				}
+			}
+			else if (matrix->data[j].row > matrix->data[j + 1].row)
+			{
+				temp = matrix->data[j + 1];
+				matrix->data[j + 1] = matrix->data[j];
+				matrix->data[j] = temp;
+			}
+
+		}
+	}
+	return;
+}
+
+
+main()
+{
+	int N; //matrix의 행
+	int M; //matrix의 열
+	int S1;  //a의 terms
+	int S2; //b의 terms
+	int i;
+	int j;
+	int k;
+	int r = 0;
+	int c = 0;
+	int v = 0;
+	int terms1;
+	int terms2;
+	int count;
+
+	SM m1;
+	SM m2;
+	SM m3;
+	SM* pm1 = &m1;
+	SM* pm2 = &m2;
+	SM* pm3 = &m3;
+
+	//printf("행과 열을 입력하시오\n");
+	scanf_s("%d", &N);
+	scanf_s("%d", &M);
+
+	m1.rows = N;
+	m1.cols = M;
+
+	m2.rows = N;
+	m2.cols = M;
+
+	m3.rows = N;
+	m3.cols = M;
+	m3.terms = 0;
+
+	//printf("항의 개수를 입력하시오\n");
+	scanf_s("%d", &S1);
+	m1.terms = S1;
+	for (i = 0; i < S1; i++)
+	{
+		//printf("행과 열과 값을 입력하시요\n");
+		scanf_s("%d", &r);
+
+		m1.data[i].row = r;
+		//printf("row%d\n", pm1->data[i].row);
+
+		scanf_s("%d", &c);
+		m1.data[i].col = c;
+		//printf("col%d\n", pm1->data[i].col);
+
+		scanf_s("%d", &v);
+		m1.data[i].value = v;
+		//printf("value%d\n", pm1->data[i].value);
+	}
+
+
+	//printf("항의 개수를 입력하시오\n");
+	scanf_s("%d", &S2);
+	m2.terms = S2;
+	for (i = 0; i < S2; i++)
+	{
+		//printf("행과 열과 값을 입력하시요\n");
+		scanf_s("%d", &r);
+
+		m2.data[i].row = r;
+		//printf("row%d\n", pm2->data[i].row);
+
+		scanf_s("%d", &c);
+		m2.data[i].col = c;
+		//printf("col%d\n", pm2->data[i].col);
+
+		scanf_s("%d", &v);
+		m2.data[i].value = v;
+		//printf("value%d\n", pm2->data[i].value); // 여기서  강제 종료 함 ??
+	}
+
+	//sumMatrix(pm1, pm2, pm3);
+	terms1 = pm1->terms;
+	terms2 = pm2->terms;
+
+	//printf("play_sumMatrix\n");
+
+	if (terms1 >= terms2)
+	{
+		count = 0;
+		for (i = 0; i < terms1; i++)
+		{
+			
+			pm3->data[i] = pm1->data[i];   //m3에 m1을 복사해서 넣어준다
+		}
+
+		pm3->terms = pm1->terms;
+
+		for (i = 0; i < terms1; i++)
+		{
+			for (j = 0; j < terms2; j++)
+			{
+				if (pm3->data[i].row == pm2->data[j].row && pm3->data[i].col == pm2->data[j].col)
+				{
+					pm3->data[i].value += pm2->data[j].value; //element의 행과 열이 동일한 경우의 value합
+					
+					pm2->data[j].row = -1;
+					pm2->data[j].col = -1;
+					pm2->data[j].value = -1;
+				}
+			}
+		}
+
+		for (i = 0; i < terms2; i++)
+		{
+			if (pm2->data[i].row != -1)
+			{
+				pm3->data[terms1 + count].row = pm2->data[i].row;
+				pm3->data[terms1 + count].col = pm2->data[i].col;
+				pm3->data[terms1 + count].value = pm2->data[i].value;
+				pm2->data[i].row = -1;
+				pm2->data[i].col = -1;
+				pm2->data[i].value = -1;
+				pm3->terms += 1;
+				count++;
+			}
+		}
+	}
+
+	else if (terms1 < terms2)
+	{
+		count = 0;
+		for (i = 0; i < terms2; i++)
+		{
+			pm3->data[i] = pm2->data[i];
+		}
+
+		pm3->terms = pm2->terms;
+
+		for (i = 0; i < terms2; i++)
+		{
+			for (j = 0; j < terms1; j++)
+			{
+				if (pm3->data[i].row == pm1->data[j].row && pm3->data[i].col == pm1->data[j].col)
+				{
+					pm3->data[i].value += pm1->data[j].value; //element의 행과 열이 동일한 경우의 value합
+				
+					pm1->data[j].row = -1;
+					pm1->data[j].col = -1;
+					pm1->data[j].value = -1;
+				}
+			}
+		}
+
+		for (i = 0; i < terms1; i++)
+		{
+			if (pm1->data[i].row != -1)
+			{
+				pm3->data[terms2 + count].row = pm1->data[i].row;
+				pm3->data[terms2 + count].col = pm1->data[i].col;
+				pm3->data[terms2 + count].value = pm1->data[i].value;
+				pm1->data[i].row = -1;
+				pm1->data[i].col = -1;
+				pm1->data[i].value = -1;
+				pm3->terms += 1;
+				count++;
+			}
+		}
+	}
+
+	sorting(pm3->terms,pm3);
+
+	printf("%d\n", pm3->terms);
+	for (i = 0; i < pm3->terms; i++)
+	{
+		printf("%d %d %d\n", pm3->data[i].row, pm3->data[i].col, pm3->data[i].value);
+	}
+
+}
+
+문제 
+희소 행렬의 합은 두 희소 행렬 A와 B의 합을 희소 행렬 C에 저장하는 것이다. 먼저 희소 행렬의 각 항은 다음 구조체로 정의된다.
+typedef struct{
+int row;
+int col;
+int value;
+} element;
+그러면 희소 행렬은 다음 구조체로 정의된다. typedef struct{
+element data[100];
+int rows; // 행의 개수
+int cols; // 열의 개수
+int terms; // 항의 개수
+} SparseMatrix;
+위와 같이 정의된 희소 행렬들을 가지고 두 희소 행렬의 합을 구하는 프로그램을 작성한다. (합역시도 희소행렬로 표현한다.)
+입력> 입력은 표준입력으로 한다. 입력 파일의 첫 줄에 두 희소 행렬의 행과 열의 개수 N과 M이공백을 사이에 두고 주어진다. 두 번째 줄에는 첫 번째 희소 행렬의 항의 개수 S가 주어진다. 그리고 다음 S개의 줄 각각에는 각 항의 정보인 행(r), 열(c), 값(v)이 주어진다. 그 다음 줄부터 두번째 희소 행렬의 정보가 위와 같이 주어진다. ( 2 ≤ ,  ≤ 100, 1 ≤  ≤ 100, 0 ≤  ≤  − 1, 0 ≤
+ ≤  − 1, 1 ≤ v ≤ 1,000 )
+출력> 출력은 표준출력으로 한다. 출력의 첫째 줄에 두 희소 행렬의 합 행렬의 항의 개수 S를 출력한다. 이어지는 S개의 줄 각각에 각 항의 정보(행, 열, 값)를 한 줄에 하나씩 출력한다. 이 때, 행의 값이 작은 것에서 큰 순으로, 행의 값이 같으면, 열의 값이 작은 것에서 큰 순으로 출력한다. 입출력의 예>
+Sample Input Sample Output
+3 3
+4
+0 2 1
+1 0 1
+1 2 2
+2 1 3
+3
+0 2 5
+1 0 3
+2 2 1
+5
+0 2 6
+1 0 4
+1 2 2
+2 1 3
+2 2 1
